@@ -1,0 +1,10 @@
+logging:
+  level: INFO
+  loggers:
+    com.estoque: DEBUG
+database:
+  driverClass: com.mysql.jdbc.Driver
+  user: root
+  password: root
+  url: jdbc:mysql://localhost:8889/estoque
+  validationQuery: "SELECT 1"
