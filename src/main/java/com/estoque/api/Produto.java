@@ -9,17 +9,28 @@ public class Produto {
     @JsonProperty
     private int cod_barras;
     @JsonProperty
+    private String nome;
+    @JsonProperty
     private String descricao;
     @JsonProperty
-    private String categoria;
+    private Categoria categoria;
 
     public Produto(){}
 
-    public Produto(int id, int cod_barras, String descricao, String categoria ) {
+    public Produto(int id, int cod_barras, String nome, String descricao, int categoria ) {
         this.id = id;
         this.cod_barras = cod_barras;
+        this.nome = nome;
         this.descricao = descricao;
-        this.categoria = categoria;
+        this.categoria = new Categoria(categoria);
+    }
+
+    public Produto(int id, int cod_barras, String nome, String descricao, int id_cat, String nome_cat ) {
+        this.id = id;
+        this.cod_barras = cod_barras;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.categoria = new Categoria(id_cat, nome_cat);
     }
 
     public int getId(){
@@ -30,11 +41,13 @@ public class Produto {
         return this.cod_barras;
     }
 
+    public String getNome() { return this.nome; }
+
     public String getDescricao(){
         return this.descricao;
     }
 
-    public String getCategoria(){
+    public Categoria getCategoria(){
         return this.categoria;
     }
 }

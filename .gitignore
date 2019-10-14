@@ -9,3 +9,50 @@
 # Maven
 log/
 target/
+
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+afferolab/dist
+afferolab/tmp
+afferolab/out-tsc
+# Only exists if Bazel was run
+afferolab/bazel-out
+
+# dependencies
+afferolab/node_modules
+
+# profiling files
+chrome-profiler-events*.json
+speed-measure-plugin*.json
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+afferolab/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+afferolab/npm-debug.log
+afferolab/yarn-error.log
+afferolab/testem.log
+afferolab/typings
+
+# System Files
+.DS_Store
+Thumbs.db
