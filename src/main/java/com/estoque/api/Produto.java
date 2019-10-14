@@ -21,4 +21,20 @@ public class Produto {
         this.descricao = descricao;
         this.categoria = categoria;
     }
+
+    public int getId(){
+        return this.id;
+    }
+
+    public int getCodBarras(){
+        return this.cod_barras;
+    }
+
+    public String getDescricao(){
+        return this.descricao;
+    }
+
+    public String getCategoria(){
+        return this.categoria;
+    }
 }
