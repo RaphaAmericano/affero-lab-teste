@@ -20,19 +20,22 @@ import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ListaProdutosComponent } from './lista-produtos/lista-produtos.component';
 import { FormularioEdicaoComponent } from './lista-produtos/formulario-edicao/formulario-edicao.component';
+import { FormularioCategoriaComponent } from './formulario-categoria/formulario-categoria.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormularioProdutoComponent,
     ListaProdutosComponent,
-    FormularioEdicaoComponent
+    FormularioEdicaoComponent,
+    FormularioCategoriaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MatGridListModule,
     MatButtonModule,
     MatFormFieldModule,
     MatSelectModule,

@@ -1,8 +1,6 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { AfferolabService } from 'src/app/afferolab.service';
-import { EventEmitter } from 'protractor';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { Produto } from 'src/app/model/produto';
 
 @Component({
   selector: 'app-formulario-edicao',
@@ -12,7 +10,6 @@ import { Produto } from 'src/app/model/produto';
 export class FormularioEdicaoComponent implements OnInit {
   
   @Input() public id_produto: number;
-  //@Output() atualizacao = new EventEmitter();
   public edicaoAtiva:boolean;
   public deleteAtiva:boolean;
   public categorias:any;
@@ -42,9 +39,14 @@ export class FormularioEdicaoComponent implements OnInit {
       },
       error => { console.log(error)}
       );
+      this.service.changeDBAlert.subscribe( value => {
+        if( value == true ){
+          this.service.getAllCategorias().toPromise().then( res => this.categorias = res )
+        }
+      })
   }
 
-  habilitarDesabilitarEdicao(){
+  public habilitarDesabilitarEdicao(){
     if(this.edicaoAtiva == false ){
       this.edicaoAtiva = true;
     } else {
@@ -52,7 +54,7 @@ export class FormularioEdicaoComponent implements OnInit {
     }
   }
 
-  habilitarDesabilitarDelete(){
+  public habilitarDesabilitarDelete(){
     if(this.deleteAtiva == false ){
         this.deleteAtiva = true;
     } else {
@@ -60,7 +62,7 @@ export class FormularioEdicaoComponent implements OnInit {
     }
   }
 
-  deletarProduto(id){
+  public deletarProduto(id){
     this.service.deleteProduto(id).subscribe(
     (data) => {
       console.log(data);
@@ -72,7 +74,7 @@ export class FormularioEdicaoComponent implements OnInit {
     })
   }
 
-  submitEdicao(id){
+  public submitEdicao(id){
     this.service.updateProduto(id, this.formularioEdicao.value).subscribe(
       data => { console.log(data) }, 
       error => { console.log(error)} 

@@ -24,7 +24,6 @@ export class ListaProdutosComponent implements OnInit {
   carregarLista() {
     this.service.getAllProdutos().toPromise().then(
       (res) => { 
-        console.log(res);
         this.produtos = res 
       }
     )

@@ -1,0 +1,9 @@
+<div class="example-container">
+   <form [formGroup]="formularioCategoria" (ngSubmit)="submitCategoria()">
+    <mat-form-field>
+        <input matInput type="text" formControlName="nome" placeholder="Nome">
+    </mat-form-field>
+    
+   <button mat-button type="submit" [disabled]="!formularioCategoria.valid" >Adicionar</button>
+    </form>
+</div>

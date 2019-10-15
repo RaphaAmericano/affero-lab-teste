@@ -28,9 +28,18 @@ export class FormularioProdutoComponent implements OnInit {
         descricao:[null, Validators.required],
         categoria:[null, Validators.required] 
       });
+      this.service.changeDBAlert.subscribe( value => {
+        if(value === true ){
+          this.service.getAllCategorias().toPromise().then(
+            (res) => { 
+            console.log(res);
+            this.listaCategorias = res 
+          });
+        }
+      });
   }
 
-  onSubmit() {
+  public onSubmit() {
     if(this.formulario.valid){
       this.submit();
     }
@@ -50,7 +59,7 @@ export class FormularioProdutoComponent implements OnInit {
       })
   }
 
-  resetar(){
+  public resetar(){
     this.formulario.reset();
   }
 

@@ -1,3 +1,4 @@
+<div class="example-container">
 <form [formGroup]="formularioEdicao" (ngSubmit)="submitEdicao(id_produto)">
     <mat-action-row>
         <mat-panel-description>
@@ -35,6 +36,6 @@
 <mat-action-row>
     <button mat-button color="primary" (click)="habilitarDesabilitarEdicao()">Editar</button>
     <button mat-button color="warn" (click)="habilitarDesabilitarDelete()">Deletar</button>
-    
-    <button mat-button color="primary" [disabled]="!deleteAtiva" (click)="deletarProduto(id_produto)">Confirmar</button>
+    <button mat-button color="warm" [disabled]="!deleteAtiva" (click)="deletarProduto(id_produto)">Confirmar</button>
 </mat-action-row>
+</div>

@@ -35,6 +35,10 @@ export class AfferolabService {
     return this.http.get(`http://localhost:8080/categorias`);
   }
 
+  public cadastrarCategoria(formulario:any){
+    return this.http.post('http://localhost:8080/categorias', formulario )
+  }
+
   public cadastrarProduto(formulario:any){
     return this.http.post(`http://localhost:8080/produtos`, formulario);
   }
