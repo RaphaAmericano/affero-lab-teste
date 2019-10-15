@@ -37,16 +37,23 @@ public class ProdutoResource {
     @POST
     public Response createProduto(Produto produto){
 
-        produtoDAO.insertProduto(produto.getCodBarras(), produto.getNome(), produto.getDescricao(), produto.getCategoria().getId());
+        produtoDAO.insertProduto(produto.getCodBarras(), produto.getNome(), produto.getQuantidade(), produto.getDescricao(), produto.getCategoria().getId());
         return Response.status(Response.Status.CREATED).build();
 
+    }
+
+    @DELETE
+    @Path("/{id}")
+    public Response deleteProduto(@PathParam("id") int id) {
+        produtoDAO.deleteProduto(id);
+        return Response.status(Response.Status.OK).build();
     }
 
     //Update
     @PUT
     @Path("/{id}")
     public Response updateProduto(@PathParam("id") int id,  Produto produto){
-        produtoDAO.updateDescricao(id, produto.getCodBarras(), produto.getNome(), produto.getCategoria().getNome(), produto.getDescricao());
+        produtoDAO.updateDescricao(id, produto.getCodBarras(), produto.getNome(), produto.getDescricao(), produto.getQuantidade(), produto.getCategoria().getId());
         return Response.status(Response.Status.OK).build();
     }
 

@@ -1,0 +1,27 @@
+
+  <div class="example-container">
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+          <input matInput type="text" formControlName="nome" placeholder="Nome">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput type="number" formControlName="cod_barras" placeholder="Cod. Barras">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="number" formControlName="quantidade" placeholder="quantidade">
+          </mat-form-field>
+        <mat-form-field>
+          <textarea matInput formControlName="descricao" placeholder="Descrição"></textarea>
+        </mat-form-field>
+      
+        <mat-form-field>
+          <mat-select formControlName="categoria" placeholder="Categoria">
+            <mat-option *ngFor="let categoria of listaCategorias" [value]="categoria.id">{{ categoria.nome }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-button type="submit" [disabled]="!formulario.valid" >Adicionar</button>
+        
+    </form>
+    <button mat-button (click)="resetar()">Resetar</button>
+  </div>
+  

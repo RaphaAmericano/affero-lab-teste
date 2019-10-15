@@ -13,22 +13,26 @@ public class Produto {
     @JsonProperty
     private String descricao;
     @JsonProperty
+    private int quantidade;
+    @JsonProperty
     private Categoria categoria;
 
     public Produto(){}
 
-    public Produto(int id, int cod_barras, String nome, String descricao, int categoria ) {
+    public Produto(int id, int cod_barras, String nome, int quantidade, String descricao, int categoria ) {
         this.id = id;
         this.cod_barras = cod_barras;
         this.nome = nome;
+        this.quantidade = quantidade;
         this.descricao = descricao;
         this.categoria = new Categoria(categoria);
     }
 
-    public Produto(int id, int cod_barras, String nome, String descricao, int id_cat, String nome_cat ) {
+    public Produto(int id, int cod_barras, String nome, int quantidade, String descricao, int id_cat, String nome_cat ) {
         this.id = id;
         this.cod_barras = cod_barras;
         this.nome = nome;
+        this.quantidade = quantidade;
         this.descricao = descricao;
         this.categoria = new Categoria(id_cat, nome_cat);
     }
@@ -42,6 +46,8 @@ public class Produto {
     }
 
     public String getNome() { return this.nome; }
+
+    public int getQuantidade() { return this.quantidade; }
 
     public String getDescricao(){
         return this.descricao;

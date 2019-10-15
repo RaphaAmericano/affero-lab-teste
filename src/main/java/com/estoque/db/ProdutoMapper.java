@@ -15,10 +15,10 @@ public class ProdutoMapper implements RowMapper<Produto> {
                 rs.getInt("id"),
                 rs.getInt("cod_barras"),
                 rs.getString("nome"),
+                rs.getInt("quantidade"),
                 rs.getString("descricao"),
                 rs.getInt("id_cat"),
                 rs.getString("nome_cat")
         );
     }
-
 }

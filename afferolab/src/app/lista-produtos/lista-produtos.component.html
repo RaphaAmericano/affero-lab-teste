@@ -1,0 +1,27 @@
+<mat-accordion class="example-headers-align" *ngFor="let produto of produtos">
+    <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+        <mat-panel-title>
+            {{ produto.nome }}
+        </mat-panel-title>
+        
+        <mat-panel-description>
+          Quantidade: {{ produto.quantidade }}
+        </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-action-row>
+            <mat-panel-description>
+                Descricao: {{ produto.descricao }}
+            </mat-panel-description>
+            <mat-panel-description>
+                {{ produto.categoria.nome }}
+            </mat-panel-description>
+        </mat-action-row>
+        <mat-action-row>
+        <button mat-button color="warn" (click)="deletarProduto(produto.id)">Deletar</button>
+        <button mat-button color="primary" (click)="habilitarDesabilitarEdicao()">Editar</button>
+        <button mat-button color="primary" [disabled]="!edicaoAtiva" (click)="confirmar()">Confirmar</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+</mat-accordion>

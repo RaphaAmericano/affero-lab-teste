@@ -14,20 +14,25 @@ public interface ProdutoDAO {
     List<Produto> getAllProdutos();
 
     //@SqlUpdate("INSERT INTO Produtos (cod_barras, nome, descricao, categoria) VALUES ( :cod_barras, :nome, :descricao, :id_cat)")
-    @SqlUpdate("INSERT INTO Produtos (cod_barras, nome, descricao, categoria) VALUES ( :cod_barras, :nome, :descricao, :categoria)")
+    @SqlUpdate("INSERT INTO Produtos (cod_barras, nome, quantidade, descricao, categoria) VALUES ( :cod_barras, :nome, :quantidade, :descricao, :categoria)")
     void insertProduto(@Bind("cod_barras") int cod_barras,
                        @Bind("nome") String nome,
+                       @Bind("quantidade") int quantidade,
                        @Bind("descricao") String descricao,
                        @Bind("categoria") int cat);
 
     @SqlQuery("SELECT * FROM Produtos WHERE id = :id")
     Produto findById(@Bind("id") int id);
 
-    @SqlUpdate("UPDATE Produtos SET descricao = :descricao, cod_barras = :cod_barras, nome = :nome, categoria = :categoria WHERE id = :id")
+    @SqlUpdate("UPDATE Produtos SET  cod_barras = :cod_barras, nome = :nome, descricao = :descricao, quantidade = :quantidade,  categoria = :categoria WHERE id = :id")
     void updateDescricao(@Bind("id") int id,
                          @Bind("cod_barras") int cod_barras,
                          @Bind("nome") String nome,
-                         @Bind("categoria") String categoria,
-                         @Bind("descricao") String descricao );
+                         @Bind("descricao") String descricao,
+                         @Bind("quantidade") int quantidade,
+                         @Bind("categoria") int categoria );
+
+    @SqlUpdate("DELETE FROM Produtos WHERE id = :id")
+    void deleteProduto(@Bind("id") int id);
 
 }
