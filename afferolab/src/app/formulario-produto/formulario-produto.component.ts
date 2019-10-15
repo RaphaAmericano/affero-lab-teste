@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { AfferolabService } from '../afferolab.service';
-import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
-import { catchError, map } from 'rxjs/operators';
+import { FormGroup, FormBuilder,  Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-formulario-produto',
@@ -11,10 +10,7 @@ import { catchError, map } from 'rxjs/operators';
 export class FormularioProdutoComponent implements OnInit {
 
   public formulario: FormGroup;
-
   public listaCategorias:any;
-
-
 
   constructor(private service:AfferolabService, private formBuilder: FormBuilder) { }
 
@@ -26,11 +22,11 @@ export class FormularioProdutoComponent implements OnInit {
       });
 
       this.formulario = this.formBuilder.group({
-        nome: [null, Validators.required, Validators.maxLength(3)],
+        nome: [null, Validators.required],
         cod_barras:[null, Validators.required],
         quantidade: [0],
         descricao:[null, Validators.required],
-        categoria:[null, Validators.required], 
+        categoria:[null, Validators.required] 
       });
   }
 
@@ -38,7 +34,6 @@ export class FormularioProdutoComponent implements OnInit {
     if(this.formulario.valid){
       this.submit();
     }
-    console.log("Submit");
   }
 
   public submit(){
@@ -46,7 +41,9 @@ export class FormularioProdutoComponent implements OnInit {
     let send = this.formulario.value;
     console.log(send);
     this.service.cadastrarProduto(send).subscribe((data) => {
-      console.log("Envido produto", data )
+      console.log("Envido produto", data );
+      this.resetar();
+      this.service.changeDB();
     },
       error => {
         console.log("Erro:", error);

@@ -1,0 +1,40 @@
+<form [formGroup]="formularioEdicao" (ngSubmit)="submitEdicao(id_produto)">
+    <mat-action-row>
+        <mat-panel-description>
+      <mat-form-field>
+          <input matInput type="text" formControlName="nome" placeholder="Nome">
+        </mat-form-field>
+      </mat-panel-description>
+      <mat-panel-description>
+        <mat-form-field>
+          <input matInput type="number" formControlName="cod_barras" placeholder="Cod. Barras">
+        </mat-form-field>
+      </mat-panel-description>
+      <mat-panel-description>
+        <mat-form-field>
+            <input matInput type="number" formControlName="quantidade" placeholder="quantidade">
+        </mat-form-field>
+      </mat-panel-description>
+      </mat-action-row>
+      
+      <mat-action-row>
+        <mat-panel-description>
+          <mat-form-field>
+            <textarea matInput formControlName="descricao" placeholder="Descrição"></textarea>
+          </mat-form-field>
+        </mat-panel-description>
+        <mat-form-field>
+          <mat-select formControlName="categoria" placeholder="Categoria">
+            <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.nome }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-button type="submit" [disabled]="!formularioEdicao.valid || !edicaoAtiva" >Editar</button>
+      </mat-action-row>
+</form>
+
+<mat-action-row>
+    <button mat-button color="primary" (click)="habilitarDesabilitarEdicao()">Editar</button>
+    <button mat-button color="warn" (click)="habilitarDesabilitarDelete()">Deletar</button>
+    
+    <button mat-button color="primary" [disabled]="!deleteAtiva" (click)="deletarProduto(id_produto)">Confirmar</button>
+</mat-action-row>

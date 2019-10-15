@@ -19,12 +19,14 @@ import {MatInputModule} from '@angular/material/input';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { ListaProdutosComponent } from './lista-produtos/lista-produtos.component';
+import { FormularioEdicaoComponent } from './lista-produtos/formulario-edicao/formulario-edicao.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormularioProdutoComponent,
-    ListaProdutosComponent
+    ListaProdutosComponent,
+    FormularioEdicaoComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +41,7 @@ import { ListaProdutosComponent } from './lista-produtos/lista-produtos.componen
     ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[FormularioEdicaoComponent]
 })
 export class AppModule { }

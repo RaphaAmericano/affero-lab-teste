@@ -17,11 +17,6 @@
                 {{ produto.categoria.nome }}
             </mat-panel-description>
         </mat-action-row>
-        <mat-action-row>
-        <button mat-button color="warn" (click)="deletarProduto(produto.id)">Deletar</button>
-        <button mat-button color="primary" (click)="habilitarDesabilitarEdicao()">Editar</button>
-        <button mat-button color="primary" [disabled]="!edicaoAtiva" (click)="confirmar()">Confirmar</button>
-        </mat-action-row>
+        <app-formulario-edicao [id_produto]="produto.id" ></app-formulario-edicao>
     </mat-expansion-panel>
-
 </mat-accordion>

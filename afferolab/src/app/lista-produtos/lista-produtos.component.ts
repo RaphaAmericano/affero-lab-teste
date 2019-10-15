@@ -10,19 +10,15 @@ export class ListaProdutosComponent implements OnInit {
 
   public produtos:any;
   public edicaoAtiva:boolean = false;
-  constructor(private service: AfferolabService) { }
+  constructor(private service: AfferolabService ) { }
 
   ngOnInit() {
+    this.service.changeDBAlert.subscribe( value => { 
+      if( value === true ){
+        this.carregarLista();
+      }
+    });
     this.carregarLista();
-  }
-
-  habilitarDesabilitarEdicao(){
-    if(this.edicaoAtiva == false ){
-      this.edicaoAtiva = true;
-    } else {
-      this.edicaoAtiva = false;
-    }
-    console.log(this.edicaoAtiva);
   }
 
   carregarLista() {
@@ -32,21 +28,6 @@ export class ListaProdutosComponent implements OnInit {
         this.produtos = res 
       }
     )
-  }
-
-  deletarProduto(id){
-    this.service.deleteProduto(id).subscribe(
-    (data) => {
-      console.log(data);
-      this.carregarLista();
-    }, 
-    (error) => {
-      console.log(error);
-    })
-  }
-
-  submitEdicao(){
-    //requisicao e bla bla bla
   }
 
 }
