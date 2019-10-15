@@ -67,7 +67,6 @@ export class FormularioEdicaoComponent implements OnInit {
     (data) => {
       console.log(data);
       this.service.changeDB();
-      //this.carregarLista();
     }, 
     (error) => {
       console.log(error);
@@ -76,7 +75,10 @@ export class FormularioEdicaoComponent implements OnInit {
 
   public submitEdicao(id){
     this.service.updateProduto(id, this.formularioEdicao.value).subscribe(
-      data => { console.log(data) }, 
+      data => { 
+        console.log(data);
+        this.service.changeDB(); 
+      }, 
       error => { console.log(error)} 
       )
   }

@@ -1,22 +1,26 @@
-<mat-accordion class="example-headers-align" *ngFor="let produto of produtos">
-    <mat-expansion-panel hideToggle>
-        <mat-expansion-panel-header>
-        <mat-panel-title>
-            {{ produto.nome }}
-        </mat-panel-title>
-        
-        <mat-panel-description>
-          Quantidade: {{ produto.quantidade }}
-        </mat-panel-description>
-        </mat-expansion-panel-header>
-        <mat-action-row>
+<div class="example-container">
+    <h2 class="mat-title">Lista de Produtos</h2>
+    <mat-accordion class="example-headers-align" *ngFor="let produto of produtos">
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{ produto.nome }}
+            </mat-panel-title>
+            
             <mat-panel-description>
-                Descricao: {{ produto.descricao }}
+            Quantidade: {{ produto.quantidade }}
             </mat-panel-description>
-            <mat-panel-description>
-                {{ produto.categoria.nome }}
-            </mat-panel-description>
-        </mat-action-row>
-        <app-formulario-edicao [id_produto]="produto.id" ></app-formulario-edicao>
-    </mat-expansion-panel>
-</mat-accordion>
+            </mat-expansion-panel-header>
+            <mat-action-row>
+                <mat-panel-description>
+                    Descricao: {{ produto.descricao }}
+                </mat-panel-description>
+                <mat-panel-description>
+                    {{ produto.categoria.nome }}
+                </mat-panel-description>
+            </mat-action-row>
+            <app-formulario-edicao [id_produto]="produto.id" ></app-formulario-edicao>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+</div>

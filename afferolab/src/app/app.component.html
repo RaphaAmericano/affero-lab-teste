@@ -1,6 +1,19 @@
 
-    <app-formulario-produto></app-formulario-produto>
-   
-    <app-lista-produtos></app-lista-produtos>
     
-    <app-formulario-categoria></app-formulario-categoria>
+   
+  
+    
+    
+
+
+    <mat-grid-list cols="2" rowHeight="2:1">
+        <mat-grid-tile>
+            <app-formulario-produto></app-formulario-produto>
+        </mat-grid-tile>
+        <mat-grid-tile><app-formulario-categoria></app-formulario-categoria></mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="1" rowHeight="2:1">
+            <mat-grid-tile>
+                <app-lista-produtos></app-lista-produtos>
+            </mat-grid-tile>
+    </mat-grid-list>

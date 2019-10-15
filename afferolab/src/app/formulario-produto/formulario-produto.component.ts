@@ -17,7 +17,6 @@ export class FormularioProdutoComponent implements OnInit {
   ngOnInit() {
     this.service.getAllCategorias().toPromise().then(
       (res) => { 
-        console.log(res);
         this.listaCategorias = res 
       });
 
@@ -32,7 +31,6 @@ export class FormularioProdutoComponent implements OnInit {
         if(value === true ){
           this.service.getAllCategorias().toPromise().then(
             (res) => { 
-            console.log(res);
             this.listaCategorias = res 
           });
         }
@@ -46,9 +44,7 @@ export class FormularioProdutoComponent implements OnInit {
   }
 
   public submit(){
-    
     let send = this.formulario.value;
-    console.log(send);
     this.service.cadastrarProduto(send).subscribe((data) => {
       console.log("Envido produto", data );
       this.resetar();
